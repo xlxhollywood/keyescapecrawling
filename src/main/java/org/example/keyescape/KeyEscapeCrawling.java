@@ -8,8 +8,11 @@ import org.bson.Document;
 import org.example.config.MongoConfig;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebDriver;
+
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -120,8 +123,24 @@ public class KeyEscapeCrawling {
     }
 
     public void crawlReservations(int days) {
-        System.setProperty("webdriver.chrome.driver", "/Users/pro/Downloads/chromedriver-mac-x64/chromedriver");
-        WebDriver driver = new ChromeDriver();
+
+        // Chromedriver 경로 설정 (Docker에서 chromedriver가 /usr/local/bin에 있음)
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+
+        // Chrome 옵션 설정
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-background-networking"); // 추가
+        options.addArguments("--user-data-dir=/dev/shm/chrome-user-data");
+
+        WebDriver driver = new ChromeDriver(options);
+
+
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try {
