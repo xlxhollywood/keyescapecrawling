@@ -50,7 +50,7 @@ task shadowJarDanpyeonseon(type: com.github.jengelman.gradle.plugins.shadow.task
     archiveClassifier.set("")
 
     manifest {
-        attributes("Main-Class": "org.example.danpyeonseonCrawling.DanpyeonseonCrawling")
+        attributes("Main-Class": "org.example.danpyeonseon.DanpyeonseonCrawling")
     }
     from sourceSets.main.output
     configurations = [project.configurations.runtimeClasspath]
@@ -107,8 +107,24 @@ task shadowJarExodus(type: com.github.jengelman.gradle.plugins.shadow.tasks.Shad
 }
 
 
+/**
+ * (6) fantastrick용 ShadowJar Task
+ *     - Main-Class = 'org.example.fantastrick.FantastrickCrawling'
+ */
+task shadowJarFantastrick(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("fantastrick")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.fantastrick.FantastrickCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
 
 /**
- * (5) build 시 네, 개의 ShadowJar Task 전부 실행하게 함
+ * (7) build 시 네, 개의 ShadowJar Task 전부 실행하게 함
  */
-build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus)
+build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus, shadowJarFantastrick)

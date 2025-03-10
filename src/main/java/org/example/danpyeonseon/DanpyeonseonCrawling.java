@@ -1,4 +1,4 @@
-package org.example.danpyeonseonCrawling;
+package org.example.danpyeonseon;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;

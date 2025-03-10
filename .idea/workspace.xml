@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bab35bf-cbd1-4b0e-95f7-09c5351fc6f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exodus/ExodusEscapeCrawling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/fantastrick/FantastrickCrawling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/danpyeonseonCrawling/DanpyeonseonCrawling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/danpyeonseon/DanpyeonseonCrawling.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +215,10 @@
       <workItem from="1741592731304" duration="1658000" />
       <workItem from="1741594674245" duration="351000" />
       <workItem from="1741595740659" duration="1002000" />
+      <workItem from="1741596969988" duration="35000" />
+      <workItem from="1741598597014" duration="36000" />
+      <workItem from="1741598655998" duration="1064000" />
+      <workItem from="1741599908340" duration="275000" />
     </task>
     <servers />
   </component>

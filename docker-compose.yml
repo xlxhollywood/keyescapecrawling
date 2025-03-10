@@ -49,3 +49,11 @@ services:
     depends_on:
       - mongo
     command: [ "java", "-jar", "build/libs/exodus-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+  # (G) 판타스트릭 크롤러
+  fantastrick:
+    build: .
+    container_name: fantastrick-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/fantastrick-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
