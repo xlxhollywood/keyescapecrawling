@@ -1,7 +1,6 @@
 # Base image
 FROM openjdk:17-slim
 
-
 # Install required dependencies
 RUN apt-get update && apt-get install -y \
     wget unzip curl \
@@ -43,8 +42,8 @@ COPY . /app
 # Grant execute permission to Gradle wrapper
 RUN chmod +x ./gradlew
 
-# Build the application
+# Build the application (이때 shadowJar 3개 전부 생성)
 RUN ./gradlew shadowJar
 
-# Run the application
+# CMD (기본: keyescape JAR 실행 - 실제론 docker-compose에서 덮어씀)
 CMD ["java", "-jar", "build/libs/keyescape-1.0-SNAPSHOT.jar"]

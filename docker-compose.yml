@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # (A) MongoDB 컨테이너
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  # (B) Danpyeonseon 크롤러
+  danpyeonseon:
+    build: .
+    container_name: danpyeonseon-crawler
+    depends_on:
+      - mongo
+    # -> Dockerfile CMD를 덮어써서,
+    # -> build/libs/danpyeonseon-1.0-SNAPSHOT.jar 실행!
+    command: ["java", "-jar", "build/libs/danpyeonseon-1.0-SNAPSHOT.jar"]
+
+  # (C) Keyescape 크롤러
+  keyescape:
+    build: .
+    container_name: keyescape-crawler
+    depends_on:
+      - mongo
+    command: ["java", "-jar", "build/libs/keyescape-1.0-SNAPSHOT.jar"]
+
+  # (D) Beatphobia 크롤러
+  beatphobia:
+    build: .
+    container_name: beatphobia-crawler
+    depends_on:
+      - mongo
+    command: ["java", "-jar", "build/libs/beatphobia-1.0-SNAPSHOT.jar"]
