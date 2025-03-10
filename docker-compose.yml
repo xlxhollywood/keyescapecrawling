@@ -33,3 +33,12 @@ services:
     depends_on:
       - mongo
     command: ["java", "-jar", "build/libs/beatphobia-1.0-SNAPSHOT.jar"]
+
+  # (E) eroom8 크롤러
+  eroom8:
+    build: .
+    container_name: eroom8-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/eroom8-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
