@@ -91,6 +91,24 @@ task shadowJarEroom8(type: com.github.jengelman.gradle.plugins.shadow.tasks.Shad
 
 
 /**
+ * (5) exodus용 ShadowJar Task
+ *     - Main-Class = 'org.example.exodus.ExodusEscapeCrawling'
+ */
+task shadowJarExodus(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("exodus")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.exodus.ExodusEscapeCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+
+
+/**
  * (5) build 시 네, 개의 ShadowJar Task 전부 실행하게 함
  */
-build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8)
+build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus)

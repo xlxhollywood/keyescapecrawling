@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bab35bf-cbd1-4b0e-95f7-09c5351fc6f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/eroom8/Eroom8Crawling.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exodus/ExodusEscapeCrawling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
@@ -212,7 +212,8 @@
       <workItem from="1741590146580" duration="15000" />
       <workItem from="1741590184264" duration="2268000" />
       <workItem from="1741592731304" duration="1658000" />
-      <workItem from="1741594674245" duration="15000" />
+      <workItem from="1741594674245" duration="351000" />
+      <workItem from="1741595740659" duration="1002000" />
     </task>
     <servers />
   </component>
