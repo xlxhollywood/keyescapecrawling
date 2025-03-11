@@ -125,6 +125,22 @@ task shadowJarFantastrick(type: com.github.jengelman.gradle.plugins.shadow.tasks
 
 
 /**
- * (7) build 시 네, 개의 ShadowJar Task 전부 실행하게 함
+ * (7) goldenkey용 ShadowJar Task
+ *     - Main-Class = 'org.example.goldenkey.GoldenkeyCrawling'
  */
-build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus, shadowJarFantastrick)
+task shadowJarGoldenkey(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("goldenkey")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.goldenkey.GoldenkeyCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+/**
+ * (8) build 시 네, 개의 ShadowJar Task 전부 실행하게 함
+ */
+build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus, shadowJarFantastrick, shadowJarGoldenkey)

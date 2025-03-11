@@ -57,3 +57,11 @@ services:
     depends_on:
       - mongo
     command: [ "java", "-jar", "build/libs/fantastrick-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+  # (H) 황금열쇠 크롤러
+  goldenkey:
+    build: .
+    container_name: goldenkey-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/goldenkey-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
