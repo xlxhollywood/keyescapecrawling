@@ -65,3 +65,28 @@ services:
     depends_on:
       - mongo
     command: [ "java", "-jar", "build/libs/goldenkey-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+  # (I) 마스터키 크롤러
+  masterkey:
+    build: .
+    container_name: masterkey-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/masterkey-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+  # (J) 쿠쿠룸 크롤러
+  kukuroom:
+    build: .
+    container_name: kukuroom-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/kukuroom-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+
+  # (K) 쿠쿠룸 크롤러
+  playtheworld:
+    build: .
+    container_name: playtheworld-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/playtheworld-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
