@@ -191,7 +191,75 @@ task shadowJarPlayTheWorld(type: com.github.jengelman.gradle.plugins.shadow.task
     configurations = [project.configurations.runtimeClasspath]
 }
 
+
 /**
- * (9) build 시 네, 개의 ShadowJar Task 전부 실행하게 함
+ * (11) pointnine용 ShadowJar Task
+ *     - Main-Class = 'org.example.pointnine.PointNineCrawling'
  */
-build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus, shadowJarFantastrick, shadowJarGoldenkey, shadowJarMasterkey, shadowJarKukuroom, shadowJarPlayTheWorld)
+task shadowJarPointNine(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("pointnine")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.pointnine.PointNineCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+
+/**
+ * (12) portraiteller용 ShadowJar Task
+ *     - Main-Class = 'org.example.pointnine.PointNineCrawling'
+ */
+task shadowJarPortraiteller(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("portraiteller")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.portraiteller.PortraitellerCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+
+/**
+ * (13) signescape용 ShadowJar Task
+ *     - Main-Class = 'org.example.pointnine.PointNineCrawling'
+ */
+task shadowJarSignescape(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("signescape")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.signescape.SignescapeCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+
+/**
+ * (14) zeroworld용 ShadowJar Task
+ *     - Main-Class = 'org.example.pointnine.PointNineCrawling'
+ */
+task shadowJarZeroWorld(type: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("zeroworld")
+    archiveVersion.set("1.0-SNAPSHOT")
+    archiveClassifier.set("")
+
+    manifest {
+        attributes("Main-Class": "org.example.zeroworld.ZeroworldCrawling")
+    }
+    from sourceSets.main.output
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+/**
+ * (15) build 시 열네개의 ShadowJar Task 전부 실행하게 함
+ */
+build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus, shadowJarFantastrick, shadowJarGoldenkey, shadowJarMasterkey, shadowJarKukuroom, shadowJarPlayTheWorld, shadowJarPointNine, shadowJarPortraiteller, shadowJarSignescape, shadowJarZeroWorld)

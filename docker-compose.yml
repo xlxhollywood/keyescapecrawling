@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 
 services:
   # (A) MongoDB 컨테이너
@@ -83,10 +83,46 @@ services:
     command: [ "java", "-jar", "build/libs/kukuroom-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
 
 
-  # (K) 쿠쿠룸 크롤러
+  # (K) 플레이더월드 크롤러
   playtheworld:
     build: .
     container_name: playtheworld-crawler
     depends_on:
       - mongo
     command: [ "java", "-jar", "build/libs/playtheworld-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+
+  # (L) 포인트나인 크롤러
+  pointnine:
+    build: .
+    container_name: pointnine-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/pointnine-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+
+  # (M) 초상화 크롤러
+  portraiteller:
+    build: .
+    container_name: portraiteller-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/portraiteller-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+
+
+  # (N) 싸인 이스케이프 크롤러
+  signescape:
+    build: .
+    container_name: signescape-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/signescape-1.0-SNAPSHOT.jar" ]
+
+
+  # (O) 제로월드 크롤러
+  zeroworld:
+    build: .
+    container_name: zeroworld-crawler
+    depends_on:
+      - mongo
+    command: [ "java", "-jar", "build/libs/zeroworld-1.0-SNAPSHOT.jar" ]
