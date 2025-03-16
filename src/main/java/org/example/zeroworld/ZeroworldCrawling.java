@@ -105,14 +105,27 @@ public class ZeroworldCrawling {
             // 7) 각 테마 처리
             for (WebElement themeLabel : themeLabels) {
                 WebElement radio = themeLabel.findElement(By.cssSelector("input[type='radio']"));
-                // radio value는 참고용
+// radio value는 참고용
                 String themeValue = radio.getAttribute("value");
+// 테마 라벨 처리 전에 raw 텍스트 확인
                 String rawThemeTitle = themeLabel.getText().trim();
+                if(rawThemeTitle.isEmpty()){
+                    // innerText 혹은 textContent로 시도
+                    rawThemeTitle = themeLabel.getAttribute("innerText");
+                }
                 String processedTitle = normalizeTitle(rawThemeTitle);
 
-                // 테마 클릭 (스크롤 후)
+
+                // 1. 헤더(방해 요소) 숨기기
+                ((JavascriptExecutor) driver).executeScript(
+                        "document.querySelector('div.container.active1.clear-b').style.display='none';"
+                );
+// 2. 클릭할 요소가 보이도록 스크롤
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", themeLabel);
-                themeLabel.click();
+// 3. JavaScript 강제 클릭
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", themeLabel);
+
+
 
                 // 8) 예약 가능한 시간 목록 대기 (#themeTimeWrap)
                 new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -137,47 +150,6 @@ public class ZeroworldCrawling {
         }
     }
 
-
-//    private void selectDateOnCalendar(String dateStr) {
-//        try {
-//            String[] parts = dateStr.split("-");
-//            int year = Integer.parseInt(parts[0]);
-//            int month = Integer.parseInt(parts[1]); // 1~12
-//            int day = Integer.parseInt(parts[2]);
-//            int dataMonth = month - 1; // 예: 3월 -> data-month="2"
-//
-//            List<WebElement> dayCells = driver.findElements(By.cssSelector(".datepicker--cell.datepicker--cell-day"));
-//
-//            for (WebElement cell : dayCells) {
-//                String cellYear = cell.getAttribute("data-year");
-//                String cellMonth = cell.getAttribute("data-month");
-//                String cellDate = cell.getAttribute("data-date");
-//                boolean isDisabled = cell.getAttribute("class").contains("-disabled-");
-//
-//                // 로그 추가 (디버깅 목적)
-//                System.out.println("날짜 검토: " + cellYear + "-" + (Integer.parseInt(cellMonth) + 1) + "-" + cellDate
-//                        + " | 비활성화 여부: " + isDisabled);
-//
-//                if (isDisabled) continue;
-//
-//                if (String.valueOf(year).equals(cellYear)
-//                        && String.valueOf(dataMonth).equals(cellMonth)
-//                        && String.valueOf(day).equals(cellDate)) {
-//                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", cell);
-//
-//                    // 클릭 가능한 상태인지 확인 후 클릭
-//                    new WebDriverWait(driver, Duration.ofSeconds(5))
-//                            .until(ExpectedConditions.elementToBeClickable(cell))
-//                            .click();
-//
-//                    return;
-//                }
-//            }
-//            System.out.println("❌ 날짜 클릭 실패 또는 해당 날짜가 비활성화됨: " + dateStr);
-//        } catch (Exception e) {
-//            System.err.println("⚠ selectDateOnCalendar() 예외 발생: " + e.getMessage());
-//        }
-//    }
 private void selectDateOnCalendar(String dateStr) {
     try {
         String[] parts = dateStr.split("-");
@@ -194,28 +166,29 @@ private void selectDateOnCalendar(String dateStr) {
             String cellDate = cell.getAttribute("data-date");
             boolean isDisabled = cell.getAttribute("class").contains("-disabled-");
 
-            System.out.println("날짜 검토: " + cellYear + "-" + (Integer.parseInt(cellMonth) + 1) + "-" + cellDate
-                    + " | 비활성화 여부: " + isDisabled);
 
-            if (isDisabled) continue;
+            if (isDisabled) continue; // 비활성화된 날짜는 스킵
 
             if (String.valueOf(year).equals(cellYear)
                     && String.valueOf(dataMonth).equals(cellMonth)
                     && String.valueOf(day).equals(cellDate)) {
 
-                // 스크롤하여 날짜 보이도록 함
+                // 📌 스크롤하여 날짜 보이게 함
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", cell);
-                Thread.sleep(500); // 스크롤 후 0.5초 대기
+                Thread.sleep(500); // 0.5초 대기
 
-                // JavaScript로 강제 클릭
+                // 📌 JavaScript로 강제 클릭 (추가된 부분)
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", cell);
-                Thread.sleep(1000); // 클릭 후 1초 대기
+                Thread.sleep(1000); // 클릭 후 대기
 
-                // themeChoice 요소가 나타날 때까지 최대 15초 대기
+                // 📌 팝업 닫기 시도 (추가된 부분)
+//                handlePopups();
+
+                // 📌 클릭 후 `themeChoice` 요소가 나타날 때까지 최대 15초 대기
                 new WebDriverWait(driver, Duration.ofSeconds(15))
                         .until(ExpectedConditions.visibilityOfElementLocated(By.id("themeChoice")));
 
-                System.out.println("✅ 날짜 클릭 성공: " + dateStr);
+//                System.out.println("✅ 날짜 클릭 성공: " + dateStr);
                 return;
             }
         }
@@ -224,6 +197,7 @@ private void selectDateOnCalendar(String dateStr) {
         System.err.println("⚠ selectDateOnCalendar() 예외 발생: " + e.getMessage());
     }
 }
+
 
 
     /**
@@ -248,9 +222,11 @@ private void selectDateOnCalendar(String dateStr) {
                 boolean isDisabled = (input.getAttribute("disabled") != null);
                 boolean hasActiveClass = lbl.getAttribute("class").contains("active");
 
-                // 3️⃣ 클릭 가능하면 리스트에 추가
+                // 클릭 가능하면, 텍스트를 가져와서 형식을 변환한 후 리스트에 추가
                 if (!isDisabled && !hasActiveClass) {
-                    result.add(lbl.getText().trim());
+                    String rawTime = lbl.getText().trim();
+                    String formattedTime = formatTime(rawTime);
+                    result.add(formattedTime);
                 }
             }
 
@@ -283,7 +259,7 @@ private void selectDateOnCalendar(String dateStr) {
             return THEME_ID_MAP.get("헐!");
         } else if (processedTitle.contains("제로호텔L")) {
             return THEME_ID_MAP.get("제로호텔L");
-        } else if (processedTitle.contains("어느 겨울밤2")) {
+        } else if (processedTitle.contains("어느겨울밤2")) {
             return THEME_ID_MAP.get("어느 겨울밤2");
         } else if (processedTitle.contains("콜러")) {
             return THEME_ID_MAP.get("콜러");
@@ -318,6 +294,38 @@ private void selectDateOnCalendar(String dateStr) {
         } catch (Exception e) {
             System.err.println("DB 저장 오류: " + e.getMessage());
         }
+    }
+//    private void handlePopups() {
+//        try {
+//            // 1️⃣ 기본 브라우저 Alert 팝업 감지 후 닫기
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+//            wait.until(ExpectedConditions.alertIsPresent());
+//            driver.switchTo().alert().accept();
+//            System.out.println("✅ Alert 팝업 닫음");
+//        } catch (Exception e) {
+//            System.out.println("ℹ️ Alert 팝업 없음");
+//        }
+//
+//        try {
+//            // 2️⃣ 특정 팝업 창 감지 후 닫기 (팝업 박스 존재 여부 확인)
+//            WebElement popupBox = driver.findElement(By.cssSelector(".popup-box"));
+//            if (popupBox.isDisplayed()) {
+//                System.out.println("✅ 팝업 감지됨, 닫기 버튼 클릭 중...");
+//
+//                // 닫기 버튼 찾기 & 클릭
+//                WebElement closeButton = driver.findElement(By.cssSelector(".evePopupCloseBtn"));
+//                closeButton.click();
+//                System.out.println("✅ 팝업 닫음");
+//            }
+//        } catch (Exception e) {
+//            System.out.println("ℹ️ 닫을 팝업 없음");
+//        }
+//    }
+
+    // 헬퍼 메서드: "10시 20분" -> "10:20" 형식으로 변환
+    private String formatTime(String timeStr) {
+        // "시 "를 ":"로, "분"을 제거합니다.
+        return timeStr.replaceAll("시\\s*", ":").replace("분", "").trim();
     }
 
     public static void main(String[] args) {

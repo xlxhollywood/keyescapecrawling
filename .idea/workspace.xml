@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bab35bf-cbd1-4b0e-95f7-09c5351fc6f6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/pointnine/PointNineCrawling.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/portraiteller/PortraitellerCrawling.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/signescape/SignescapeCrawling.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/zeroworld/ZeroworldCrawling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/zeroworld/ZeroworldCrawling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/zeroworld/ZeroworldCrawling.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,36 +74,37 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.KeyEscapeCrawling.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.zeroworld: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build keyescape.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.keyescape [:KeyEscapeCrawling.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.keyescape [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.keyescape [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.keyescape [jar].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pro/IntelliJ/docker_crawling/src/main/java/org/example&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/pro/IntelliJ/keyescape/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.KeyEscapeCrawling.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Docker.docker-compose.yml.zeroworld: Compose Deployment.executor": "Run",
+    "Gradle.Build keyescape.executor": "Run",
+    "Gradle.docker_crawling [:ZeroworldCrawling.main()].executor": "Debug",
+    "Gradle.keyescape [:KeyEscapeCrawling.main()].executor": "Run",
+    "Gradle.keyescape [:Main.main()].executor": "Run",
+    "Gradle.keyescape [clean].executor": "Run",
+    "Gradle.keyescape [jar].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/pro/IntelliJ/docker_crawling/src/main/java/org/example",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/Users/pro/IntelliJ/keyescape/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/org/example" />
@@ -119,13 +115,13 @@
       <recent name="org.example.kukuroom" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml.zeroworld: Compose Deployment">
-    <configuration name="KeyEscapeCrawling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.keyescape.KeyEscapeCrawling" />
+  <component name="RunManager" selected="Application.ZeroworldCrawling">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="docker_crawling.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.keyescape.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,12 +129,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+    <configuration name="ZeroworldCrawling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.zeroworld.ZeroworldCrawling" />
       <module name="docker_crawling.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.zeroworld.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -211,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ZeroworldCrawling" />
         <item itemvalue="Docker.docker-compose.yml.zeroworld: Compose Deployment" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.keyescape [clean]" />
         <item itemvalue="Gradle.keyescape [jar]" />
-        <item itemvalue="Application.KeyEscapeCrawling" />
       </list>
     </recent_temporary>
   </component>
@@ -262,6 +258,7 @@
       <workItem from="1741781066512" duration="623000" />
       <workItem from="1741865207001" duration="1845000" />
       <workItem from="1741881651329" duration="4026000" />
+      <workItem from="1742027780031" duration="2182000" />
     </task>
     <servers />
   </component>
