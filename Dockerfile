@@ -42,8 +42,21 @@ COPY . /app
 # Grant execute permission to Gradle wrapper
 RUN chmod +x ./gradlew
 
-# Build the application (이때 shadowJar 3개 전부 생성)
+# Build the application
 RUN ./gradlew shadowJar
 
-# CMD (기본: keyescape JAR 실행 - 실제론 docker-compose에서 덮어씀)
-CMD ["java", "-jar", "build/libs/keyescape-1.0-SNAPSHOT.jar"]
+# 실행할 JAR 파일을 환경 변수로 설정 (각 크롤러별 JAR 경로를 설정 가능)
+ENV JAR_FILE=""
+
+# 무한 루프 실행 (크롤러가 종료되더라도 자동으로 다시 시작)
+CMD while true; do \
+    if [ -f "/app/build/libs/$JAR_FILE" ]; then \
+        echo "Executing $JAR_FILE..."; \
+        java -jar /app/build/libs/$JAR_FILE; \
+        echo "Restarting in 60 seconds..."; \
+        sleep 60; \
+    else \
+        echo "ERROR: JAR file '/app/build/libs/$JAR_FILE' not found!"; \
+        exit 1; \
+    fi \
+done

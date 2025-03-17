@@ -1,4 +1,4 @@
-#version: '3.8'
+version: '3.8'
 
 services:
   # (A) MongoDB 컨테이너
@@ -8,121 +8,138 @@ services:
     ports:
       - "27017:27017"
 
-  # (B) Danpyeonseon 크롤러
-  danpyeonseon:
+  # (B) 크롤러 공통 베이스 이미지 (한 번만 빌드됨)
+  crawler-base:
     build: .
+    image: crawler-base
+    container_name: crawler-base
+    environment:
+      - JAR_FILE=""
+    entrypoint: ["/bin/true"]  # 실행되지 않도록 설정
+
+  # (C~O) 개별 크롤러 서비스 (공통 이미지 사용)
+  danpyeonseon:
+    image: crawler-base
     container_name: danpyeonseon-crawler
     depends_on:
       - mongo
-    # -> Dockerfile CMD를 덮어써서,
-    # -> build/libs/danpyeonseon-1.0-SNAPSHOT.jar 실행!
-    command: ["java", "-jar", "build/libs/danpyeonseon-1.0-SNAPSHOT.jar"]
+    environment:
+      - JAR_FILE=danpyeonseon-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (C) Keyescape 크롤러
   keyescape:
-    build: .
+    image: crawler-base
     container_name: keyescape-crawler
     depends_on:
       - mongo
-    command: ["java", "-jar", "build/libs/keyescape-1.0-SNAPSHOT.jar"]
+    environment:
+      - JAR_FILE=keyescape-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (D) Beatphobia 크롤러
   beatphobia:
-    build: .
+    image: crawler-base
     container_name: beatphobia-crawler
     depends_on:
       - mongo
-    command: ["java", "-jar", "build/libs/beatphobia-1.0-SNAPSHOT.jar"]
+    environment:
+      - JAR_FILE=beatphobia-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (E) eroom8 크롤러
   eroom8:
-    build: .
+    image: crawler-base
     container_name: eroom8-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/eroom8-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=eroom8-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (F) 엑소더스이스케이프 크롤러
   exodus:
-    build: .
+    image: crawler-base
     container_name: exodus-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/exodus-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=exodus-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (G) 판타스트릭 크롤러
   fantastrick:
-    build: .
+    image: crawler-base
     container_name: fantastrick-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/fantastrick-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=fantastrick-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (H) 황금열쇠 크롤러
   goldenkey:
-    build: .
+    image: crawler-base
     container_name: goldenkey-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/goldenkey-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=goldenkey-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (I) 마스터키 크롤러
   masterkey:
-    build: .
+    image: crawler-base
     container_name: masterkey-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/masterkey-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=masterkey-1.0-SNAPSHOT.jar
+    restart: always
 
-  # (J) 쿠쿠룸 크롤러
   kukuroom:
-    build: .
+    image: crawler-base
     container_name: kukuroom-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/kukuroom-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=kukuroom-1.0-SNAPSHOT.jar
+    restart: always
 
-
-  # (K) 플레이더월드 크롤러
   playtheworld:
-    build: .
+    image: crawler-base
     container_name: playtheworld-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/playtheworld-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=playtheworld-1.0-SNAPSHOT.jar
+    restart: always
 
-
-  # (L) 포인트나인 크롤러
   pointnine:
-    build: .
+    image: crawler-base
     container_name: pointnine-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/pointnine-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=pointnine-1.0-SNAPSHOT.jar
+    restart: always
 
-
-  # (M) 초상화 크롤러
   portraiteller:
-    build: .
+    image: crawler-base
     container_name: portraiteller-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/portraiteller-1.0-SNAPSHOT.jar" ]  # ✅ 올바른 경로
+    environment:
+      - JAR_FILE=portraiteller-1.0-SNAPSHOT.jar
+    restart: always
 
-
-  # (N) 싸인 이스케이프 크롤러
   signescape:
-    build: .
+    image: crawler-base
     container_name: signescape-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/signescape-1.0-SNAPSHOT.jar" ]
+    environment:
+      - JAR_FILE=signescape-1.0-SNAPSHOT.jar
+    restart: always
 
-
-  # (O) 제로월드 크롤러
   zeroworld:
-    build: .
+    image: crawler-base
     container_name: zeroworld-crawler
     depends_on:
       - mongo
-    command: [ "java", "-jar", "build/libs/zeroworld-1.0-SNAPSHOT.jar" ]
+    environment:
+      - JAR_FILE=zeroworld-1.0-SNAPSHOT.jar
+    restart: always
