@@ -53,7 +53,7 @@ services:
     environment:
       - JAR_FILE=eroom8-1.0-SNAPSHOT.jar
     restart: always
-
+#안보임
   exodus:
     image: crawler-base
     container_name: exodus-crawler
@@ -89,7 +89,7 @@ services:
     environment:
       - JAR_FILE=masterkey-1.0-SNAPSHOT.jar
     restart: always
-
+#안보임
   kukuroom:
     image: crawler-base
     container_name: kukuroom-crawler
