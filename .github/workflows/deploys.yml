@@ -1,0 +1,47 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시될 때 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Pull latest code on EC2 and restart services
+        run: |
+          ssh -i ~/.ssh/id_rsa ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
+            cd ~/keyescapecrawling
+            git pull origin main
+            docker-compose down
+
+            echo "🚀 Building crawler-base..."
+            docker-compose build crawler-base
+
+            echo "🔄 Starting MongoDB..."
+            docker-compose up -d mongo
+
+            echo "🕐 Waiting for MongoDB to be ready..."
+            sleep 10  # MongoDB가 완전히 실행될 시간을 줌
+
+            echo "🚀 Starting crawler-base..."
+            docker-compose up -d crawler-base
+
+            echo "🕐 Waiting for crawler-base to be ready..."
+            sleep 10  # crawler-base가 완전히 실행될 시간을 줌
+
+            echo "🔥 Starting all crawlers..."
+            docker-compose up -d
+          EOF
