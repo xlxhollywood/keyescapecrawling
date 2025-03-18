@@ -65,6 +65,9 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -262,6 +265,7 @@
       <workItem from="1742193399138" duration="6268000" />
       <workItem from="1742201006119" duration="1445000" />
       <workItem from="1742225502969" duration="731000" />
+      <workItem from="1742229709216" duration="1374000" />
     </task>
     <servers />
   </component>

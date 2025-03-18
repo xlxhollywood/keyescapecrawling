@@ -53,8 +53,8 @@ CMD while true; do \
     if [ -f "/app/build/libs/$JAR_FILE" ]; then \
         echo "Executing $JAR_FILE..."; \
         java -jar /app/build/libs/$JAR_FILE; \
-        echo "Restarting in 60 seconds..."; \
-        sleep 60; \
+        echo "Restarting in 1200 seconds..."; \
+        sleep 1200; \
     else \
         echo "ERROR: JAR file '/app/build/libs/$JAR_FILE' not found!"; \
         exit 1; \
