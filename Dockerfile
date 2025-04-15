@@ -43,7 +43,7 @@ COPY . /app
 RUN chmod +x ./gradlew
 
 # Build the application
-RUN ./gradlew shadowJar
+RUN ./gradlew build
 
 # 실행할 JAR 파일을 환경 변수로 설정 (각 크롤러별 JAR 경로를 설정 가능)
 ENV JAR_FILE=""
