@@ -47,28 +47,28 @@ public class SignescapeCrawling {
     private static final List<BranchMapping> BRANCH_MAPPINGS = new ArrayList<>();
     static {
         BRANCH_MAPPINGS.add(new BranchMapping("S6", "강남", "강남시티점", Arrays.asList(
-                new ThemeMapping("A", "러너웨이", 169),
-                new ThemeMapping("C", "EXPRESS", 171),
-                new ThemeMapping("B", "MUST", 170)
+                new ThemeMapping("A", "러너웨이", 171),
+                new ThemeMapping("C", "EXPRESS", 173),
+                new ThemeMapping("B", "MUST", 172)
         )));
         BRANCH_MAPPINGS.add(new BranchMapping("S5", "홍대", "홍대점", Arrays.asList(
-                new ThemeMapping("A", "거상", 177),
-                new ThemeMapping("B", "졸업", 179),
-                new ThemeMapping("C", "하이팜", 178)
+                new ThemeMapping("A", "거상", 179),
+                new ThemeMapping("B", "졸업", 181),
+                new ThemeMapping("C", "하이팜", 180)
         )));
         BRANCH_MAPPINGS.add(new BranchMapping("S4", "수원", "인계점", Arrays.asList(
-                new ThemeMapping("D", "신비의 베이커리", 181),
-                new ThemeMapping("C", "악은 어디에나 존재한다", 183),
-                new ThemeMapping("B", "트라이 위저드", 182),
-                new ThemeMapping("E", "GATE : CCZ (episode 1)", 180),
-                new ThemeMapping("A", "NEW", 184)
+                new ThemeMapping("D", "신비의 베이커리", 183),
+                new ThemeMapping("C", "악은 어디에나 존재한다", 185),
+                new ThemeMapping("B", "트라이 위저드", 184),
+                new ThemeMapping("E", "GATE : CCZ (episode 1)", 182),
+                new ThemeMapping("A", "NEW", 186)
         )));
         BRANCH_MAPPINGS.add(new BranchMapping("S2", "수원", "성대역점", Arrays.asList(
-                new ThemeMapping("B", "각성(Awakening)", 173),
-                new ThemeMapping("E", "고시텔(3층)", 176),
-                new ThemeMapping("A", "우울증(Depression)", 172),
-                new ThemeMapping("C", "인턴(Intern)", 174),
-                new ThemeMapping("D", "자멜신부의 비밀", 175)
+                new ThemeMapping("B", "각성(Awakening)", 175),
+                new ThemeMapping("E", "고시텔(3층)", 178),
+                new ThemeMapping("A", "우울증(Depression)", 174),
+                new ThemeMapping("C", "인턴(Intern)", 176),
+                new ThemeMapping("D", "자멜신부의 비밀", 177)
         )));
     }
 

@@ -24,15 +24,15 @@ public class ZeroworldCrawling {
     // 사용자 정의 ID 매핑 (테마명 → ID)
     private static final Map<String, Integer> THEME_ID_MAP = new HashMap<>();
     static {
-        THEME_ID_MAP.put("링", 195);
-        THEME_ID_MAP.put("포레스트(FORREST)", 196);
-        THEME_ID_MAP.put("DONE", 197);
-        THEME_ID_MAP.put("아이엠", 198);
-        THEME_ID_MAP.put("헐!", 199);
-        THEME_ID_MAP.put("제로호텔L", 200);
-        THEME_ID_MAP.put("어느 겨울밤2", 201);
-        THEME_ID_MAP.put("콜러", 202);
-        THEME_ID_MAP.put("나비효과", 203);
+        THEME_ID_MAP.put("링", 197);
+        THEME_ID_MAP.put("포레스트(FORREST)", 198);
+        THEME_ID_MAP.put("DONE", 199);
+        THEME_ID_MAP.put("아이엠", 200);
+        THEME_ID_MAP.put("헐!", 201);
+        THEME_ID_MAP.put("제로호텔L", 202);
+        THEME_ID_MAP.put("어느 겨울밤2", 203);
+        THEME_ID_MAP.put("콜러", 204);
+        THEME_ID_MAP.put("나비효과", 205);
     }
 
     // 고정 정보 (원하는 출력/DB 저장 형식에 맞춰 수정)

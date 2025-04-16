@@ -44,34 +44,34 @@ public class PlayTheWorldCrawling {
 
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
             // 강남점
-            new ThemeMapping(256, "플레이더월드", "강남", "강남점", "먹루마블"),
-            new ThemeMapping(253, "플레이더월드", "강남", "강남점", "이웃집 또도와"),
-            new ThemeMapping(255, "플레이더월드", "강남", "강남점", "이웃집 또털어"),
-            new ThemeMapping(257, "플레이더월드", "강남", "강남점", "두근두근 러브대작전"),
-            new ThemeMapping(258, "플레이더월드", "강남", "강남점", "조선피자몰"),
-            new ThemeMapping(259, "플레이더월드", "강남", "강남점", "이상한 나라로 출두요"),
+            new ThemeMapping(259, "플레이더월드", "강남", "강남점", "먹루마블"),
+            new ThemeMapping(256, "플레이더월드", "강남", "강남점", "이웃집 또도와"),
+            new ThemeMapping(258, "플레이더월드", "강남", "강남점", "이웃집 또털어"),
+            new ThemeMapping(260, "플레이더월드", "강남", "강남점", "두근두근 러브대작전"),
+            new ThemeMapping(261, "플레이더월드", "강남", "강남점", "조선피자몰"),
+            new ThemeMapping(262, "플레이더월드", "강남", "강남점", "이상한 나라로 출두요"),
 
             // 건대점
-            new ThemeMapping(260, "플레이더월드", "건대", "건대점", "선고"),
-            new ThemeMapping(261, "플레이더월드", "건대", "건대점", "뱀파이어 헌터"),
-            new ThemeMapping(262, "플레이더월드", "건대", "건대점", "사악한 악마와 달콤한 공장"),
-            new ThemeMapping(263, "플레이더월드", "건대", "건대점", "전지적 교수님 시점"),
-            new ThemeMapping(264, "플레이더월드", "건대", "건대점", "개수작"),
+            new ThemeMapping(263, "플레이더월드", "건대", "건대점", "선고"),
+            new ThemeMapping(264, "플레이더월드", "건대", "건대점", "뱀파이어 헌터"),
+            new ThemeMapping(265, "플레이더월드", "건대", "건대점", "사악한 악마와 달콤한 공장"),
+            new ThemeMapping(266, "플레이더월드", "건대", "건대점", "전지적 교수님 시점"),
+            new ThemeMapping(267, "플레이더월드", "건대", "건대점", "개수작"),
 
             // 부평점
-            new ThemeMapping(265, "플레이더월드", "인천", "부평점", "구해줘 햄즈"),
-            new ThemeMapping(266, "플레이더월드", "인천", "부평점", "별점테러 짜장나요"),
-            new ThemeMapping(267, "플레이더월드", "인천", "부평점", "호스피스"),
-            new ThemeMapping(268, "플레이더월드", "인천", "부평점", "세이브 더 월드"),
-            new ThemeMapping(269, "플레이더월드", "인천", "부평점", "노 웨이 아웃"),
+            new ThemeMapping(268, "플레이더월드", "인천", "부평점", "구해줘 햄즈"),
+            new ThemeMapping(269, "플레이더월드", "인천", "부평점", "별점테러 짜장나요"),
+            new ThemeMapping(270, "플레이더월드", "인천", "부평점", "호스피스"),
+            new ThemeMapping(271, "플레이더월드", "인천", "부평점", "세이브 더 월드"),
+            new ThemeMapping(272, "플레이더월드", "인천", "부평점", "노 웨이 아웃"),
 
             // 평택점
-            new ThemeMapping(270, "플레이더월드", "평택", "평택점", "시간전당포"),
-            new ThemeMapping(271, "플레이더월드", "평택", "평택점", "사귀"),
-            new ThemeMapping(272, "플레이더월드", "평택", "평택점", "대탈출2"),
-            new ThemeMapping(273, "플레이더월드", "평택", "평택점", "MSI 미제사건 전담반"),
-            new ThemeMapping(274, "플레이더월드", "평택", "평택점", "집으로"),
-            new ThemeMapping(275, "플레이더월드", "평택", "평택점", "쌩얼")
+            new ThemeMapping(273, "플레이더월드", "평택", "평택점", "시간전당포"),
+            new ThemeMapping(274, "플레이더월드", "평택", "평택점", "사귀"),
+            new ThemeMapping(275, "플레이더월드", "평택", "평택점", "대탈출2"),
+            new ThemeMapping(276, "플레이더월드", "평택", "평택점", "MSI 미제사건 전담반"),
+            new ThemeMapping(277, "플레이더월드", "평택", "평택점", "집으로"),
+            new ThemeMapping(278, "플레이더월드", "평택", "평택점", "쌩얼")
     );
 
 

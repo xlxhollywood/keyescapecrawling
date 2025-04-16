@@ -42,47 +42,47 @@ public class BeatphobiaCrawling {
 
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
             //  홍대던전
-            new ThemeMapping(149, "비트포비아", "홍대", "홍대던전", "사라진 보물 : 대저택의 비밀", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
-            new ThemeMapping(150, "비트포비아", "홍대", "홍대던전", "날씨의 신", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
-            new ThemeMapping(151, "비트포비아", "홍대", "홍대던전", "꿈의 공장", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
-            new ThemeMapping(152, "비트포비아", "홍대", "홍대던전", "오늘 나는", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
+            new ThemeMapping(161, "비트포비아", "홍대", "홍대던전", "사라진 보물 : 대저택의 비밀", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
+            new ThemeMapping(152, "비트포비아", "홍대", "홍대던전", "날씨의 신", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
+            new ThemeMapping(153, "비트포비아", "홍대", "홍대던전", "꿈의 공장", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
+            new ThemeMapping(154, "비트포비아", "홍대", "홍대던전", "오늘 나는", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=3"),
             //  던전101
-            new ThemeMapping(300, "비트포비아", "홍대", "던전101", "화생설화 : Blooming", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
-            new ThemeMapping(157, "비트포비아", "홍대", "던전101", "MST 엔터테인먼트", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
-            new ThemeMapping(158, "비트포비아", "홍대", "던전101", "LET’S PLAY TOGETHER", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
-            new ThemeMapping(159, "비트포비아", "홍대", "던전101", "전래동 자살사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
+            new ThemeMapping(302, "비트포비아", "홍대", "던전101", "화생설화 : Blooming", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
+            new ThemeMapping(159, "비트포비아", "홍대", "던전101", "MST 엔터테인먼트", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
+            new ThemeMapping(160, "비트포비아", "홍대", "던전101", "LET’S PLAY TOGETHER", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
+            new ThemeMapping(151, "비트포비아", "홍대", "던전101", "전래동 자살사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=1"),
             //  홍대던전3
-            new ThemeMapping(153, "비트포비아", "홍대", "홍대던전3", "그달동네", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
-            new ThemeMapping(154, "비트포비아", "홍대", "홍대던전3", "이미지 세탁소", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
-            new ThemeMapping(155, "비트포비아", "홍대", "홍대던전3", "경성 연쇄실종사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
-            new ThemeMapping(156, "비트포비아", "홍대", "홍대던전3", "And I met E", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
+            new ThemeMapping(155, "비트포비아", "홍대", "홍대던전3", "그달동네", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
+            new ThemeMapping(156, "비트포비아", "홍대", "홍대던전3", "이미지 세탁소", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
+            new ThemeMapping(157, "비트포비아", "홍대", "홍대던전3", "경성 연쇄실종사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
+            new ThemeMapping(158, "비트포비아", "홍대", "홍대던전3", "And I met E", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=5"),
             //  강남던전
-            new ThemeMapping(143, "비트포비아", "강남", "강남던전", "강남목욕탕", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
-            new ThemeMapping(144, "비트포비아", "강남", "강남던전", "대호시장 살인사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
-            new ThemeMapping(145, "비트포비아", "강남", "강남던전", "LOST KINGDOM : 잊혀진 전설", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
-            new ThemeMapping(146, "비트포비아", "강남", "강남던전", "마음을 그려드립니다", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
+            new ThemeMapping(145, "비트포비아", "강남", "강남던전", "강남목욕탕", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
+            new ThemeMapping(146, "비트포비아", "강남", "강남던전", "대호시장 살인사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
+            new ThemeMapping(150, "비트포비아", "강남", "강남던전", "LOST KINGDOM : 잊혀진 전설", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
+            new ThemeMapping(148, "비트포비아", "강남", "강남던전", "마음을 그려드립니다", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=2"),
 
             //  강남던전2
-            new ThemeMapping(145, "비트포비아", "강남", "강남던전2", "LOST KINGDOM2 : 대탐험의 시작", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=4"),
-            new ThemeMapping(141, "비트포비아", "강남", "강남던전2", "MAYDAY", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=4"),
+            new ThemeMapping(147, "비트포비아", "강남", "강남던전2", "LOST KINGDOM2 : 대탐험의 시작", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=4"),
+            new ThemeMapping(143, "비트포비아", "강남", "강남던전2", "MAYDAY", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=4"),
             //  던전루나
-            new ThemeMapping(142, "비트포비아", "강남", "던전루나", "검은 운명의 밤", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=6"),
-            new ThemeMapping(147, "비트포비아", "강남", "던전루나", "3일", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=6"),
+            new ThemeMapping(144, "비트포비아", "강남", "던전루나", "검은 운명의 밤", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=6"),
+            new ThemeMapping(149, "비트포비아", "강남", "던전루나", "3일", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=6"),
             //  던전스텔라
-            new ThemeMapping(138, "비트포비아", "강남", "던전스텔라", "響 : 향", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=9"),
-            new ThemeMapping(139, "비트포비아", "강남", "던전스텔라", "데스티니 앤드 타로", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=9"),
-            new ThemeMapping(140, "비트포비아", "강남", "던전스텔라", "TIENTANG CITY", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=9"),
+            new ThemeMapping(140, "비트포비아", "강남", "던전스텔라", "響 : 향", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=9"),
+            new ThemeMapping(141, "비트포비아", "강남", "던전스텔라", "데스티니 앤드 타로", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=9"),
+            new ThemeMapping(142, "비트포비아", "강남", "던전스텔라", "TIENTANG CITY", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=9"),
             // 서면던전
-            new ThemeMapping(160, "비트포비아", "서면", "서면던전", "오늘 나는", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=7"),
-            new ThemeMapping(161, "비트포비아", "서면", "서면던전", "꿈의 공장", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=7"),
-            new ThemeMapping(162, "비트포비아", "서면", "서면던전", "날씨의 신", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=7"),
+            new ThemeMapping(162, "비트포비아", "서면", "서면던전", "오늘 나는", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=7"),
+            new ThemeMapping(163, "비트포비아", "서면", "서면던전", "꿈의 공장", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=7"),
+            new ThemeMapping(164, "비트포비아", "서면", "서면던전", "날씨의 신", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=7"),
             // 서면던전 레드
-            new ThemeMapping(163, "비트포비아", "서면", "서면던전 레드", "어느 수집가의 집", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
-            new ThemeMapping(164, "비트포비아", "서면", "서면던전 레드", "AMEN", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
-            new ThemeMapping(165, "비트포비아", "서면", "서면던전 레드", "고시원 살인사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
-            new ThemeMapping(166, "비트포비아", "서면", "서면던전 레드", "당감동 정육점", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
-            new ThemeMapping(167, "비트포비아", "서면", "서면던전 레드", "부적", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
-            new ThemeMapping(168, "비트포비아", "서면", "서면던전 레드", "산장으로의 초대", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10")
+            new ThemeMapping(165, "비트포비아", "서면", "서면던전 레드", "어느 수집가의 집", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
+            new ThemeMapping(166, "비트포비아", "서면", "서면던전 레드", "AMEN", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
+            new ThemeMapping(167, "비트포비아", "서면", "서면던전 레드", "고시원 살인사건", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
+            new ThemeMapping(168, "비트포비아", "서면", "서면던전 레드", "당감동 정육점", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
+            new ThemeMapping(169, "비트포비아", "서면", "서면던전 레드", "부적", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10"),
+            new ThemeMapping(170, "비트포비아", "서면", "서면던전 레드", "산장으로의 초대", "https://xdungeon.net/layout/res/home.php?go=rev.main&s_zizum=10")
 
 
     );

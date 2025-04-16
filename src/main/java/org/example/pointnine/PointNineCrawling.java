@@ -40,19 +40,19 @@ public class PointNineCrawling {
 
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
             // 강남점
-            new ThemeMapping(242, "포인트나인", "강남", "강남점", "EP1 : 시간이 멈춘 마을"),
-            new ThemeMapping(243, "포인트나인", "강남", "강남점", "EP2 : 열쇠공의 이중생활"),
-            new ThemeMapping(244, "포인트나인", "강남", "강남점", "EP3 : 눈 먼 귀금속상인의 후회"),
-            new ThemeMapping(245, "포인트나인", "강남", "강남점", "EP4 : 주인 없는 낡은 서점"),
+            new ThemeMapping(244, "포인트나인", "강남", "강남점", "EP1 : 시간이 멈춘 마을"),
+            new ThemeMapping(245, "포인트나인", "강남", "강남점", "EP2 : 열쇠공의 이중생활"),
+            new ThemeMapping(246, "포인트나인", "강남", "강남점", "EP3 : 눈 먼 귀금속상인의 후회"),
+            new ThemeMapping(247, "포인트나인", "강남", "강남점", "EP4 : 주인 없는 낡은 서점"),
 
             // 건대점
-            new ThemeMapping(248, "포인트나인", "건대", "건대점", "JACK IN THE SHOW"),
-            new ThemeMapping(249, "포인트나인", "건대", "건대점", "RETURN"),
-            new ThemeMapping(250, "포인트나인", "건대", "건대점", "ALBA"),
+            new ThemeMapping(250, "포인트나인", "건대", "건대점", "JACK IN THE SHOW"),
+            new ThemeMapping(251, "포인트나인", "건대", "건대점", "RETURN"),
+            new ThemeMapping(252, "포인트나인", "건대", "건대점", "ALBA"),
 
             // 홍대점
-            new ThemeMapping(251, "포인트나인", "홍대", "홍대점", "SILENT"),
-            new ThemeMapping(252, "포인트나인", "홍대", "홍대점", "LISTEN")
+            new ThemeMapping(253, "포인트나인", "홍대", "홍대점", "SILENT"),
+            new ThemeMapping(255, "포인트나인", "홍대", "홍대점", "LISTEN")
     );
 
 

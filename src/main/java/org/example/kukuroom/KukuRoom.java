@@ -43,10 +43,10 @@ public class KukuRoom {
 
 
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
-            new ThemeMapping(207, "쿠쿠룸1089", "강남", "강남점", "신비로운 직원생활"),
-            new ThemeMapping(208, "쿠쿠룸1089", "강남", "강남점", "실직요정 비상대책위원회"),
-            new ThemeMapping(206, "쿠쿠룸1089", "강남", "강남점", "백순대-셀레스트"),
-            new ThemeMapping(209, "쿠쿠룸1089", "강남", "강남점", "쿠쿠마스터")
+            new ThemeMapping(209, "쿠쿠룸1089", "강남", "강남점", "신비로운 직원생활"),
+            new ThemeMapping(210, "쿠쿠룸1089", "강남", "강남점", "실직요정 비상대책위원회"),
+            new ThemeMapping(208, "쿠쿠룸1089", "강남", "강남점", "백순대-셀레스트"),
+            new ThemeMapping(211, "쿠쿠룸1089", "강남", "강남점", "쿠쿠마스터")
     );
 
     private static final Map<String, ThemeMapping> THEME_MAP = new HashMap<>();

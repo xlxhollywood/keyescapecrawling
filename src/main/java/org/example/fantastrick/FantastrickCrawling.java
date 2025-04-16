@@ -41,8 +41,8 @@ public class FantastrickCrawling {
 
     private static final Map<String, ThemeInfo> THEME_INFO_MAP = new LinkedHashMap<>();
     static {
-        THEME_INFO_MAP.put("사자의 서 : 북오브 두아트", new ThemeInfo("23", "사자의 서 : 북오브 두아트", 241));
-        THEME_INFO_MAP.put("태초의 신부 : 이브 프로젝트", new ThemeInfo("17", "태초의 신부 : 이브 프로젝트", 240));
+        THEME_INFO_MAP.put("사자의 서 : 북오브 두아트", new ThemeInfo("23", "사자의 서 : 북오브 두아트", 243));
+        THEME_INFO_MAP.put("태초의 신부 : 이브 프로젝트", new ThemeInfo("17", "태초의 신부 : 이브 프로젝트", 242));
 
     }
 

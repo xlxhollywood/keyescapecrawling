@@ -40,8 +40,8 @@ public class PortraitellerCrawling {
     // 캘린더별 매핑 (키: API URL에 사용되는 캘린더 이름)
     private static final Map<String, ThemeMapping> CALENDAR_MAPPING = new HashMap<>();
     static {
-        CALENDAR_MAPPING.put("lesportrait", new ThemeMapping(204, "초상화", "강남", "강남점", "Les portrait"));
-        CALENDAR_MAPPING.put("hiraeth", new ThemeMapping(205, "초상화", "강남", "강남점", "Hiraeth"));
+        CALENDAR_MAPPING.put("lesportrait", new ThemeMapping(206, "초상화", "강남", "강남점", "Les portrait"));
+        CALENDAR_MAPPING.put("hiraeth", new ThemeMapping(207, "초상화", "강남", "강남점", "Hiraeth"));
     }
 
     public PortraitellerCrawling() {

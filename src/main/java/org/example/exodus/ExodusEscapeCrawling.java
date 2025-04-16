@@ -40,8 +40,8 @@ public class ExodusEscapeCrawling {
      * - 필요에 따라 추가/수정 가능
      */
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
-            new ThemeMapping(185, "엑소더스이스케이프", "강남", "강남 1호점", "CLAIM"),
-            new ThemeMapping(186, "엑소더스이스케이프", "강남", "강남 1호점", "WISH")
+            new ThemeMapping(187, "엑소더스이스케이프", "강남", "강남 1호점", "CLAIM"),
+            new ThemeMapping(188, "엑소더스이스케이프", "강남", "강남 1호점", "WISH")
     );
 
     // 엑소더스이스케이프 예약 페이지

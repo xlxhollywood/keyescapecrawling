@@ -31,14 +31,14 @@ public class Eroom8Crawling {
     }
 
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
-            new ThemeMapping(187, "고인"),
-            new ThemeMapping(188, "민초"),
-            new ThemeMapping(189, "나의계획은"),
-            new ThemeMapping(190, "고령화사회"),
-            new ThemeMapping(191, "아이엠유튜버"),
-            new ThemeMapping(192, "스테이시"),
-            new ThemeMapping(193, "낙원"),
-            new ThemeMapping(194, "죽지않아")
+            new ThemeMapping(189, "고인"),
+            new ThemeMapping(190, "민초"),
+            new ThemeMapping(191, "나의계획은"),
+            new ThemeMapping(192, "고령화사회"),
+            new ThemeMapping(193, "아이엠유튜버"),
+            new ThemeMapping(194, "스테이시"),
+            new ThemeMapping(195, "낙원"),
+            new ThemeMapping(196, "죽지않아")
     );
 
     public Eroom8Crawling() {
