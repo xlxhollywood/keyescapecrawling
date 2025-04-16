@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MasterkeyCrawling {
     private final MongoCollection<Document> reservationCollection;
@@ -36,12 +37,11 @@ public class MasterkeyCrawling {
             this.bid = bid;
         }
     }
-
     private static final List<ThemeMapping> THEME_MAPPINGS = Arrays.asList(
             // 노바홍대 , 플포랩 강남, 프라임신촌퍼블릭, 노원점, 건대점, 잠실점,홍대점
             // 신촌 (bid=32)
             new ThemeMapping(40, "마스터키", "신촌", "프라임 신촌 퍼블릭점", "SCENE : 404 NOT FOUND", 32),
-            new ThemeMapping(41, "마스터키", "신촌", "프라임 신촌 퍼블릭점", "그도...그럴 것이다", 32),
+            new ThemeMapping(41, "마스터키", "신촌", "프라임 신촌 퍼블릭점", "그도... 그럴 것이다", 32),
             new ThemeMapping(42, "마스터키", "신촌", "프라임 신촌 퍼블릭점", "인투더와일드", 32),
             // 노바홍대 (bid=41)
             new ThemeMapping(60, "마스터키", "홍대", "노바홍대점", "검은의사", 41),
@@ -58,16 +58,16 @@ public class MasterkeyCrawling {
             new ThemeMapping(136, "마스터키", "강남", "마스터키강남점", "STAFF ONLY", 35),
             new ThemeMapping(137, "마스터키", "강남", "마스터키강남점", "작은창고", 35),
             //  잠실점 (bid=21)
-            new ThemeMapping(50, "마스터키", "잠실", "잠실점", "이스케이프 플랜", 21),
+            new ThemeMapping(50, "마스터키", "잠실", "잠실점", "이스케이프플랜", 21),
             new ThemeMapping(67, "마스터키", "잠실", "잠실점", "어게인", 21),
             new ThemeMapping(51, "마스터키", "잠실", "잠실점", "그리고 아무도 없었다", 21),
-            new ThemeMapping(53, "마스터키", "잠실", "잠실점", "블랙룸 : 쉽게 만들어진 방", 21),
+            new ThemeMapping(53, "마스터키", "잠실", "잠실점", "블랙룸:쉽게 만들어진 방", 21),
             new ThemeMapping(65, "마스터키", "잠실", "잠실점", "샵보이스", 21),
-            new ThemeMapping(63, "마스터키", "잠실", "잠실점", "더매치 : 마지막 전쟁", 21),
+            new ThemeMapping(63, "마스터키", "잠실", "잠실점", "더매치:마지막전쟁", 21),
             //  홍대점 (bid=11)
-            new ThemeMapping(66, "마스터키", "홍대", "홍대점", "온칼로 : 10만년의 밤", 11),
+            new ThemeMapping(66, "마스터키", "홍대", "홍대점", "온칼로", 11),
             new ThemeMapping(58, "마스터키", "홍대", "홍대점", "연애조작단", 11),
-            new ThemeMapping(59, "마스터키", "홍대", "홍대점", "B미술학원 13호실", 11),
+            new ThemeMapping(59, "마스터키", "홍대", "홍대점", "B미술학원13호실", 11),
             // 노원점 (bid=31)
             new ThemeMapping(61, "마스터키", "노원", "노원점", "통제구역", 31),
             new ThemeMapping(62, "마스터키", "노원", "노원점", "일탈", 31),
@@ -76,6 +76,9 @@ public class MasterkeyCrawling {
 
 
     );
+
+    private static final Map<String, Integer> TITLE_TO_ID_MAP = THEME_MAPPINGS.stream()
+            .collect(Collectors.toMap(m -> m.title, m -> m.id));
 
     public MasterkeyCrawling() {
         MongoClient mongoClient = MongoConfig.getMongoClient();
@@ -101,7 +104,6 @@ public class MasterkeyCrawling {
                     .append("expireAt", new Date(System.currentTimeMillis() + 24L * 60 * 60 * 1000));
 
             reservationCollection.updateOne(filter, new Document("$set", docToSave), new UpdateOptions().upsert(true));
-
             // ✅ 지점명과 날짜를 한 번만 출력하도록 개선
             if (isFirstDate) {
                 System.out.println("\n📍 " + mapping.branch + " (" + date + ")");
@@ -175,7 +177,25 @@ public class MasterkeyCrawling {
                     for (Map.Entry<String, List<String>> entry : themeAvailability.entrySet()) {
                         String themeTitle = entry.getKey();
                         List<String> availableTimes = entry.getValue();
-                        saveToDatabase(new ThemeMapping(mapping.id, mapping.brand, mapping.location, mapping.branch, themeTitle, mapping.bid), date, availableTimes, isFirstDate);
+
+                        // ✅ [여기부터] 내가 정의한 title -> id 매핑 적용
+                        Integer predefinedId = TITLE_TO_ID_MAP.get(themeTitle);
+                        if (predefinedId == null) {
+                            System.out.println("⚠ 정의되지 않은 테마: " + themeTitle);
+                            continue; // 무시하거나 로그 찍고 패스
+                        }
+
+                        ThemeMapping fixedMapping = new ThemeMapping(
+                                predefinedId,
+                                mapping.brand,
+                                mapping.location,
+                                mapping.branch,
+                                themeTitle,
+                                mapping.bid
+                        );
+                        // ✅ [여기까지] 내가 정의한 id로 저장되게 처리
+
+                        saveToDatabase(fixedMapping, date, availableTimes, isFirstDate);
                         isFirstDate = false;
                     }
                 }

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3bab35bf-cbd1-4b0e-95f7-09c5351fc6f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/goldenkey/GoldenkeyCrawling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/goldenkey/GoldenkeyCrawling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/masterkey/MasterkeyCrawling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/masterkey/MasterkeyCrawling.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,6 +286,10 @@
       <workItem from="1742881197104" duration="71000" />
       <workItem from="1743997011416" duration="399000" />
       <workItem from="1744710293122" duration="993000" />
+      <workItem from="1744719758650" duration="466000" />
+      <workItem from="1744789961972" duration="3003000" />
+      <workItem from="1744798028609" duration="5579000" />
+      <workItem from="1744809164720" duration="3029000" />
     </task>
     <servers />
   </component>
