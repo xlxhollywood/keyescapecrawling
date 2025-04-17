@@ -140,7 +140,7 @@ public class GoldenkeyCrawling {
 
                     // 첫 테마라면 "📍 지점 (yyyy-MM-dd)" 출력
                     if (isFirstTheme) {
-                        System.out.println("\n📍7번쨰 트라이" + finalBranch + " (" + dateStr + ")");
+                        System.out.println("\n📍" + finalBranch + " (" + dateStr + ")");
                         isFirstTheme = false;
                     }
 
@@ -194,8 +194,6 @@ public class GoldenkeyCrawling {
 
                 String extractedTitle = titleEl.text().trim();
 
-                // ✅ 원본 제목 로그 출력
-                System.out.println("🔎 원본 추출 제목 (HTML에서): \"" + extractedTitle + "\"");
 
                 List<String> availableTimes = new ArrayList<>();
                 Elements liElements = box.select("div.time_Area ul.reserve_Time li");
@@ -230,9 +228,6 @@ public class GoldenkeyCrawling {
             String normalizedMapping = normalize(info.title);
             double similarity = jaroWinklerSimilarity(normalizedExtracted, normalizedMapping);
 
-            // 🔍 로그 출력
-            System.out.println("🟡 매칭 시도: " + extractedTitle + " → normalize: " + normalizedExtracted);
-            System.out.println("    ↪️ 비교 대상: " + info.title + " → normalize: " + normalizedMapping + " → 유사도: " + similarity);
 
             if (similarity > bestSimilarity) {
                 bestSimilarity = similarity;
@@ -241,7 +236,6 @@ public class GoldenkeyCrawling {
         }
 
         if (bestMatch != null) {
-            System.out.println("✅ 선택된 매핑: " + bestMatch.title + " (id=" + bestMatch.id + "), 유사도: " + bestSimilarity);
             if (bestSimilarity >= 0.05) {
                 return bestMatch;
             }
