@@ -124,37 +124,50 @@ public class KeyEscapeCrawling {
 
     public void crawlReservations(int days) {
 
-        // Chromedriver 경로 설정 (Docker에서 chromedriver가 /usr/local/bin에 있음)
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-
-        // Chrome 옵션 설정
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--disable-background-networking"); // 추가
+        options.addArguments("--disable-background-networking");
         options.addArguments("--user-data-dir=/dev/shm/chrome-user-data");
 
         WebDriver driver = new ChromeDriver(options);
-
-
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try {
             for (ThemeMapping mapping : THEME_MAPPINGS) {
                 driver.get(mapping.url);
 
+                Calendar calendar = Calendar.getInstance(); // 시작 기준 달력
+                int currentCalendarMonth = calendar.get(Calendar.MONTH); // 현재 달력 월 (0=1월)
+
                 for (int i = 0; i < days; i++) {
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.add(Calendar.DATE, i);
+                    Calendar targetCalendar = Calendar.getInstance();
+                    targetCalendar.add(Calendar.DATE, i);
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String targetDate = dateFormat.format(calendar.getTime());
+                    String targetDate = dateFormat.format(targetCalendar.getTime());
+
+                    int targetMonth = targetCalendar.get(Calendar.MONTH);
+
+                    // 🔵 달력이 현재 달과 다르면 다음 달로 넘기기
+                    if (targetMonth != currentCalendarMonth) {
+                        try {
+                            WebElement nextMonthButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.next-month.change-month")));
+                            nextMonthButton.click();
+//                            System.out.println("🔵 달력 넘김: 다음 달로 이동");
+                            currentCalendarMonth = targetMonth; // 현재 월 업데이트
+
+                            Thread.sleep(1000); // 달력 다시 렌더링될 시간 주기
+                        } catch (Exception e) {
+                            System.err.println("❌ 달력 넘기기 실패: " + e.getMessage());
+                        }
+                    }
 
                     String dateSelector = "td.selDate.available[data-date='" + targetDate + "']";
                     boolean isFirstDate = true;
+
                     try {
                         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(dateSelector)));
                         WebElement dateElement = driver.findElement(By.cssSelector(dateSelector));
@@ -188,6 +201,7 @@ public class KeyEscapeCrawling {
             driver.quit();
         }
     }
+
 
     public static void main(String[] args) {
         KeyEscapeCrawling crawler = new KeyEscapeCrawling();
