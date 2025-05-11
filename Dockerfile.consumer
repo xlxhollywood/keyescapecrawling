@@ -1,0 +1,10 @@
+# Kafka 컨슈머는 크롬도 필요 없으므로 더 작은 베이스 사용 가능
+FROM openjdk:17-slim
+
+WORKDIR /app
+
+# 빌드된 JAR 파일 복사
+COPY build/libs/kafka-to-mongo-consumer-1.0-SNAPSHOT.jar app.jar
+
+# 실행 명령
+CMD ["java", "-jar", "app.jar"]
