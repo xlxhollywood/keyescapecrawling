@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bab35bf-cbd1-4b0e-95f7-09c5351fc6f6" name="Changes" comment="" />
+    <list default="true" id="3bab35bf-cbd1-4b0e-95f7-09c5351fc6f6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/keyescape/KeyEscapeCrawling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/keyescape/KeyEscapeCrawling.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,8 +96,11 @@
     &quot;Application.KeyEscapeCrawling.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Docker.docker-compose.yml.zeroworld: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build docker_crawling.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Build keyescape.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.docker_crawling [:KeyEscapeCrawling.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.docker_crawling [:ZeroworldCrawling.main()].executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.docker_crawling [shadowJarKafkaConsumer].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.keyescape [:KeyEscapeCrawling.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.keyescape [:Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.keyescape [clean].executor&quot;: &quot;Run&quot;,
@@ -128,12 +136,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.keyescape [clean]">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+    <configuration name="KeyEscapeCrawling" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.keyescape.KeyEscapeCrawling" />
       <module name="docker_crawling.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.keyescape.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,6 +162,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="docker_crawling [shadowJarKafkaConsumer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="shadowJarKafkaConsumer" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="keyescape [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -166,28 +196,6 @@
         <option name="taskNames">
           <list>
             <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="keyescape [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -220,10 +228,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.keyescape [clean]" />
+        <item itemvalue="Gradle.docker_crawling [shadowJarKafkaConsumer]" />
+        <item itemvalue="Application.KeyEscapeCrawling" />
         <item itemvalue="Application.ZeroworldCrawling" />
         <item itemvalue="Docker.docker-compose.yml.zeroworld: Compose Deployment" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Gradle.keyescape [jar]" />
       </list>
     </recent_temporary>
   </component>
@@ -287,19 +295,39 @@
       <workItem from="1744798028609" duration="5579000" />
       <workItem from="1744809164720" duration="3746000" />
       <workItem from="1744817140695" duration="4346000" />
+      <workItem from="1744862477359" duration="132000" />
+      <workItem from="1745737161448" duration="292000" />
+      <workItem from="1745912978280" duration="13230000" />
+      <workItem from="1746344958566" duration="8317000" />
+      <workItem from="1746518467329" duration="293000" />
+      <workItem from="1747206145879" duration="117000" />
+      <workItem from="1747206436880" duration="233000" />
+      <workItem from="1747232590018" duration="471000" />
+      <workItem from="1747319169650" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/build.gradle</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
+          <line>16</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

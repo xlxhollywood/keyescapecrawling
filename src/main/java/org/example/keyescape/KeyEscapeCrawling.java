@@ -1,17 +1,12 @@
 package org.example.keyescape;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.UpdateOptions;
-import org.bson.Document;
-import org.example.config.MongoConfig;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
+import org.example.config.KafkaProducerConfig;
 
 
 import java.text.SimpleDateFormat;
@@ -19,7 +14,7 @@ import java.time.Duration;
 import java.util.*;
 
 public class KeyEscapeCrawling {
-    private final MongoCollection<Document> reservationCollection;
+
 
     private static class ThemeMapping {
         int id;
@@ -92,37 +87,35 @@ public class KeyEscapeCrawling {
     );
 
 
-    public KeyEscapeCrawling() {
-        MongoClient mongoClient = MongoConfig.getMongoClient();
-        MongoDatabase database = mongoClient.getDatabase("scrd");
-        this.reservationCollection = database.getCollection("reservation");
-    }
 
     private void saveToDatabase(ThemeMapping mapping, String date, List<String> availableTimes, boolean isFirstDate) {
         try {
-            Document filter = new Document("title", mapping.title).append("date", date);
-            Document docToSave = new Document("brand", mapping.brand)
-                    .append("location", mapping.location)
-                    .append("branch", mapping.branch)
-                    .append("title", mapping.title)
-                    .append("id", mapping.id)
-                    .append("date", date)
-                    .append("availableTimes", availableTimes)
-                    .append("updatedAt", new Date())
-                    .append("expireAt", new Date(System.currentTimeMillis() + 24L * 60 * 60 * 1000));
+            Map<String, Object> docToSend = new HashMap<>();
+            docToSend.put("brand", mapping.brand);
+            docToSend.put("location", mapping.location);
+            docToSend.put("branch", mapping.branch);
+            docToSend.put("title", mapping.title);
+            docToSend.put("id", mapping.id);
+            docToSend.put("date", date);
+            docToSend.put("availableTimes", availableTimes);
+            docToSend.put("updatedAt", new Date());
+            docToSend.put("expireAt", new Date(System.currentTimeMillis() + 24L * 60 * 60 * 1000));
 
-            reservationCollection.updateOne(filter, new Document("$set", docToSave), new UpdateOptions().upsert(true));
+            KafkaProducerConfig.send("reservation_topic", docToSend);
 
             if (isFirstDate) {
-                System.out.println("\n📍 " + mapping.branch + " (" + date + ")");
+                System.out.println("\n📍카프카 ver2 " + mapping.branch + " (" + date + ")");
             }
             System.out.println(" - " + mapping.title + " : " + (availableTimes.isEmpty() ? "없음" : availableTimes));
         } catch (Exception e) {
-            System.err.println("DB 저장 오류: " + e.getMessage());
+            System.err.println("Kafka 전송 오류: " + e.getMessage());
         }
     }
 
+
     public void crawlReservations(int days) {
+
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
@@ -204,6 +197,7 @@ public class KeyEscapeCrawling {
 
 
     public static void main(String[] args) {
+        System.out.println("✅ 최신 코드 반영 테스트: keyescape 크롤러입니다.");
         KeyEscapeCrawling crawler = new KeyEscapeCrawling();
         crawler.crawlReservations(7);
     }

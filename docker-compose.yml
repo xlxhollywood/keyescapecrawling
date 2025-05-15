@@ -30,8 +30,6 @@ services:
   keyescape:
     image: crawler-base
     container_name: keyescape-crawler
-    depends_on:
-      - mongo
     environment:
       - JAR_FILE=keyescape-1.0-SNAPSHOT.jar
     restart: always
@@ -53,7 +51,7 @@ services:
     environment:
       - JAR_FILE=eroom8-1.0-SNAPSHOT.jar
     restart: always
-#안보임
+
   exodus:
     image: crawler-base
     container_name: exodus-crawler
@@ -89,7 +87,7 @@ services:
     environment:
       - JAR_FILE=masterkey-1.0-SNAPSHOT.jar
     restart: always
-#안보임
+
   kukuroom:
     image: crawler-base
     container_name: kukuroom-crawler
@@ -143,3 +141,26 @@ services:
     environment:
       - JAR_FILE=zeroworld-1.0-SNAPSHOT.jar
     restart: always
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LOG_RETENTION_MS: 259200000
