@@ -140,6 +140,16 @@ public class KeyEscapeCrawling {
         try {
             for (ThemeMapping mapping : THEME_MAPPINGS) {
                 driver.get(mapping.url);
+                // [NEW] 팝업(alert) 감지 후 자동으로 닫기
+                try {
+                    WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+                    alertWait.until(ExpectedConditions.alertIsPresent());
+                    Alert alert = driver.switchTo().alert();
+                    System.out.println("❗ 알림창 감지됨: " + alert.getText());
+                    alert.dismiss();  // 또는 alert.accept();
+                } catch (NoAlertPresentException | TimeoutException ignore) {
+                    // 알림창 없으면 무시하고 계속 진행
+                }
 
                 Calendar calendar = Calendar.getInstance(); // 시작 기준 달력
                 int currentCalendarMonth = calendar.get(Calendar.MONTH); // 현재 달력 월 (0=1월)
