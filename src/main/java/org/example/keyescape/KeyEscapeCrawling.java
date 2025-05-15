@@ -125,6 +125,7 @@ public class KeyEscapeCrawling {
     public void crawlReservations(int days) {
 
         ChromeOptions options = new ChromeOptions();
+        options.setBinary("/opt/chrome/chrome");
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
