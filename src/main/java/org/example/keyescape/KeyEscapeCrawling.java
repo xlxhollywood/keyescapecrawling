@@ -139,8 +139,20 @@ public class KeyEscapeCrawling {
 
         try {
             for (ThemeMapping mapping : THEME_MAPPINGS) {
-                driver.get(mapping.url);
-                // [NEW] 팝업(alert) 감지 후 자동으로 닫기
+
+                // [1] URL 이동 시도 (Alert 중첩 방지용 try-catch)
+                try {
+                    driver.get(mapping.url);
+                } catch (UnhandledAlertException e) {
+                    try {
+                        Alert alert = driver.switchTo().alert();
+                        System.out.println("❗ (get 중) 알림창 감지됨: " + alert.getText());
+                        alert.dismiss(); // 또는 alert.accept();
+                    } catch (NoAlertPresentException ignored) {
+                    }
+                }
+
+                // [2] get() 이후 알림창 감지
                 try {
                     WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(2));
                     alertWait.until(ExpectedConditions.alertIsPresent());
@@ -148,29 +160,25 @@ public class KeyEscapeCrawling {
                     System.out.println("❗ 알림창 감지됨: " + alert.getText());
                     alert.dismiss();  // 또는 alert.accept();
                 } catch (NoAlertPresentException | TimeoutException ignore) {
-                    // 알림창 없으면 무시하고 계속 진행
+                    // 알림창 없으면 무시
                 }
 
-                Calendar calendar = Calendar.getInstance(); // 시작 기준 달력
-                int currentCalendarMonth = calendar.get(Calendar.MONTH); // 현재 달력 월 (0=1월)
+                Calendar calendar = Calendar.getInstance();
+                int currentCalendarMonth = calendar.get(Calendar.MONTH);
 
                 for (int i = 0; i < days; i++) {
                     Calendar targetCalendar = Calendar.getInstance();
                     targetCalendar.add(Calendar.DATE, i);
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     String targetDate = dateFormat.format(targetCalendar.getTime());
-
                     int targetMonth = targetCalendar.get(Calendar.MONTH);
 
-                    // 🔵 달력이 현재 달과 다르면 다음 달로 넘기기
                     if (targetMonth != currentCalendarMonth) {
                         try {
                             WebElement nextMonthButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.next-month.change-month")));
                             nextMonthButton.click();
-//                            System.out.println("🔵 달력 넘김: 다음 달로 이동");
-                            currentCalendarMonth = targetMonth; // 현재 월 업데이트
-
-                            Thread.sleep(1000); // 달력 다시 렌더링될 시간 주기
+                            currentCalendarMonth = targetMonth;
+                            Thread.sleep(1000);
                         } catch (Exception e) {
                             System.err.println("❌ 달력 넘기기 실패: " + e.getMessage());
                         }
@@ -185,7 +193,6 @@ public class KeyEscapeCrawling {
                         dateElement.click();
 
                         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".timepicker-ui")));
-
                         List<WebElement> timeElements = driver.findElements(By.cssSelector(".timepicker-ui .timeList li label input:not([disabled]) + span"));
                         List<String> availableTimes = new ArrayList<>();
 
@@ -199,7 +206,6 @@ public class KeyEscapeCrawling {
 
                         WebElement backButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("back_btn")));
                         backButton.click();
-
                         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".datepicker-ui")));
                     } catch (Exception e) {
                         System.out.println("❌ 날짜 " + targetDate + " 선택 불가 또는 예약 시간 없음.");
@@ -211,6 +217,7 @@ public class KeyEscapeCrawling {
         } finally {
             driver.quit();
         }
+
     }
 
 

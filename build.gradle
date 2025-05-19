@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'org.example'
@@ -20,6 +21,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     implementation 'org.jsoup:jsoup:1.15.4'
     implementation 'org.json:json:20230618'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 test {
@@ -263,3 +265,6 @@ task shadowJarZeroWorld(type: com.github.jengelman.gradle.plugins.shadow.tasks.S
  * (15) build 시 열네개의 ShadowJar Task 전부 실행하게 함
  */
 build.dependsOn(shadowJar, shadowJarDanpyeonseon, shadowJarBeatphobia, shadowJarEroom8, shadowJarExodus, shadowJarFantastrick, shadowJarGoldenkey, shadowJarMasterkey, shadowJarKukuroom, shadowJarPlayTheWorld, shadowJarPointNine, shadowJarPortraiteller, shadowJarSignescape, shadowJarZeroWorld)
+kotlin {
+    jvmToolchain(17)
+}
